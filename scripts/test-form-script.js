@@ -1,5 +1,8 @@
 
 $(function () {
+
+    $("#phone").mask("+375(99)999-99-99");
+
     $('form.ajax').on('submit', function() {
         // console.log('Trigger');
       
