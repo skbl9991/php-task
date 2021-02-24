@@ -1,24 +1,24 @@
 <?php
-    // $name = "Не известно";
-    // $surname = "Не известно";
-    // $phone = "Не известно";
-    // if(isset($_POST['name'])) $name = $_POST['name'];
-    // if(isset($_POST['surname'])) $surname = $_POST['surname'];
-    // if(isset($_POST['phone'])) $phone = $_POST['phone'];
 
-    $returnurl = "";
-    if(isset($_SERVER['HTTP_REFERER']))  
-        $returnurl = $_SERVER['HTTP_REFERER'];
+    if (isset($_POST['name'], $_POST['surname'] , $_POST['phone'])) {
 
-    if (isset($_POST['phone'], $_POST['phone'] , $_POST['phone'])) {
-        header("Location: $returnurl", false,  200);
-        exit();
+        $name = $_POST['name'];
+        $surname = $_POST['surname'];
+        $phone = $_POST['phone'];
+
+        $filename = "user-data.txt";
+        $fh = fopen($filename, "w") or die("Unable to open file!");
+        fwrite($fh, "Ваше Имя: $name  Ваша Фамилия: $surname Ваш телефон: $phone");
+        fclose($fh);
+
+        header("HTTP/1.1 200 OK");
+       // exit();
     }
-    //header("HTTP/1.1 200 OK");
+    //
     else {
         header("HTTP/1.1 400 Bad Request");
-        exit();
+        //exit();
     }
-        
-    // echo "Ваше Имя: $name  <br> Ваша Фамилия: $surname <br> Ваш телефон: $phone" ;
+
+    //  echo "Ваше Имя: $name  <br> Ваша Фамилия: $surname <br> Ваш телефон: $phone" ;
 ?>

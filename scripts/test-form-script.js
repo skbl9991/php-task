@@ -2,7 +2,7 @@
 $(function () {
     $('form.ajax').on('submit', function() {
         // console.log('Trigger');
-
+      
         var form = $(this),
             url = form.attr('action'),
             type = form.attr('method'),
@@ -39,6 +39,6 @@ $(function () {
             }
         });
 
-           return false;
+        return false;
     });
 });
